@@ -7,6 +7,7 @@ public class App {
        
         GUI graphics =  new GUI();
         graphics.AddStudent();
+        graphics.ShowAllStudent();
 
     // ManageStudents manage = new ManageStudents();
 

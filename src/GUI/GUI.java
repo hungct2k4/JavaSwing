@@ -41,6 +41,15 @@ public class GUI {
         window.setLocationByPlatform(true);
         window.setVisible(true);
     }
+    public void ShowAllStudent() {
+        show.addActionListener(new ActionListener() {  
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (Students o : manage.manageStudents)
+                    System.out.println(o.ShowInfor());
+            }  
+        });  
+    }
 
     public void AddStudent() {
         addStudent.addActionListener(new ActionListener() {  
@@ -79,23 +88,24 @@ public class GUI {
                 login.addActionListener(new ActionListener() {  
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Students student_ = new Students();
+                        // Students student_ = new Students();
                         
                         // System.out.println(nameText.getText());
                         // System.out.println(Integer.parseInt(ageText.getText()));
                         // System.out.println(addressText.getText());
                         // System.out.println(genderText.getText());
 
-                        student_.setName(nameText.getText());
-                        student_.setAge(Integer.parseInt(ageText.getText()));
-                        student_.setAddress(addressText.getText());
-                        student_.setGenger(genderText.getText());
+                        // student_.setName(nameText.getText());
+                        // student_.setAge(Integer.parseInt(ageText.getText()));
+                        // student_.setAddress(addressText.getText());
+                        // student_.setGenger(genderText.getText());
+                        Students student_ = new Students(nameText.getText(), Integer.parseInt(ageText.getText()), genderText.getText(), addressText.getText());
 
-                        arr.add(student_);
+                        // arr.add(student_);
                         manage.manageStudents.add(student_);
 
-                        for (Students o : manage.manageStudents) 
-                            System.out.println(o.ShowInfor());
+                        // for (Students o : manage.manageStudents) 
+                        //     System.out.println(o.ShowInfor());
 
                     }  
                 });
