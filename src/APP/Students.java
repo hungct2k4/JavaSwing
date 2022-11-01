@@ -5,6 +5,13 @@ public class Students {
     public String genger;
     public String address;
 
+    public Students(String name, int age, String genger, String address) {
+        this.name = name;
+        this.age = age;
+        this.genger = genger;
+        this.address = address;
+    }
+
     public Students() {
         this.name = "";
         this.age = 0;
@@ -12,12 +19,6 @@ public class Students {
         this.address = "";
     }
 
-    public Students(String name, int age, String genger, String address) {
-        this.name = name;
-        this.age = age;
-        this.genger = genger;
-        this.address = address;
-    }
     public String getName() {
         return name;
     }

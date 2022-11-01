@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,7 +15,7 @@ public class GUI {
     JButton deleteStudent;
     JButton show;
     JFrame window;
-    Students student_;
+    ArrayList<Students> arr = new ArrayList<>();
     ManageStudents manage;
 
     public GUI() {
@@ -28,6 +29,7 @@ public class GUI {
         deleteStudent.setBounds(20, 120, 200, 30);
         show.setBounds(20, 160, 200, 30);
         
+        manage = new ManageStudents();
 
         window.add(addStudent);
         window.add(editStudent);
@@ -46,7 +48,7 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 JFrame add_window = new JFrame("Add Students"); 
 
-                // JTextField nameText = new JTextField("Add your name");                     
+                // JTextField nameText = new JTextFiecld("Add your name");                     
                 // JTextField ageText = new JTextField("Add your age");
                 // JTextField genderText = new JTextField("Add your gender");
                 // JTextField addressText = new JTextField("Add your address");
@@ -68,10 +70,36 @@ public class GUI {
                 add_window.add(addressText);
                 add_window.add(login);
                 
-                // student_= new Students();
                 // Students student = new Students(nameText.getName(), Integer.parseInt(ageText.getName()), genderText.getName(), addressText.getName());
 
                 // manage.manageStudents.add(student_);
+
+                // Students st1 = new Students("Elon", 55, "Boy", "USA");
+
+                login.addActionListener(new ActionListener() {  
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Students student_ = new Students();
+                        
+                        // System.out.println(nameText.getText());
+                        // System.out.println(Integer.parseInt(ageText.getText()));
+                        // System.out.println(addressText.getText());
+                        // System.out.println(genderText.getText());
+
+                        student_.setName(nameText.getText());
+                        student_.setAge(Integer.parseInt(ageText.getText()));
+                        student_.setAddress(addressText.getText());
+                        student_.setGenger(genderText.getText());
+
+                        arr.add(student_);
+                        manage.manageStudents.add(student_);
+
+                        for (Students o : manage.manageStudents) 
+                            System.out.println(o.ShowInfor());
+
+                    }  
+                });
+                
                 add_window.setSize(800,500);
                 add_window.setLayout(null);
                 add_window.setLocationByPlatform(true);
