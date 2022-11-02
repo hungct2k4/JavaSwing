@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import APP.*;
@@ -15,6 +16,7 @@ public class GUI {
     JButton deleteStudent;
     JButton show;
     JFrame window;
+    ArrayList<JLabel> arrJLabel = new ArrayList<>();
     ArrayList<Students> arr = new ArrayList<>();
     ManageStudents manage;
 
@@ -45,10 +47,26 @@ public class GUI {
         show.addActionListener(new ActionListener() {  
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (Students o : manage.manageStudents)
-                    System.out.println(o.ShowInfor());
+                JFrame showStudents = new JFrame();
+                
+                for (int i = 0; i < arrJLabel.size(); i++) {
+                    arrJLabel.get(i).setBounds(250, 0 + 20 * i, 300, 20);
+                    showStudents.add(arrJLabel.get(i));
+                }
+
+                
+
+                // JLabel labelshowall = new JLabel("hello");
+                showStudents.setSize(800,500);
+                showStudents.setLayout(null);
+                showStudents.setLocationByPlatform(true);
+                showStudents.setVisible(true);              
+
+                // for (Students o : manage.manageStudents)
+                //     System.out.println(o.ShowInfor());
             }  
         });  
+        
     }
 
     public void AddStudent() {
@@ -56,12 +74,6 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame add_window = new JFrame("Add Students"); 
-
-                // JTextField nameText = new JTextFiecld("Add your name");                     
-                // JTextField ageText = new JTextField("Add your age");
-                // JTextField genderText = new JTextField("Add your gender");
-                // JTextField addressText = new JTextField("Add your address");
-
                 JTextField nameText = new JTextField();                   
                 JTextField ageText = new JTextField();    
                 JTextField genderText = new JTextField();
@@ -78,35 +90,13 @@ public class GUI {
                 add_window.add(genderText);
                 add_window.add(addressText);
                 add_window.add(login);
-                
-                // Students student = new Students(nameText.getName(), Integer.parseInt(ageText.getName()), genderText.getName(), addressText.getName());
-
-                // manage.manageStudents.add(student_);
-
-                // Students st1 = new Students("Elon", 55, "Boy", "USA");
-
                 login.addActionListener(new ActionListener() {  
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        // Students student_ = new Students();
-                        
-                        // System.out.println(nameText.getText());
-                        // System.out.println(Integer.parseInt(ageText.getText()));
-                        // System.out.println(addressText.getText());
-                        // System.out.println(genderText.getText());
-
-                        // student_.setName(nameText.getText());
-                        // student_.setAge(Integer.parseInt(ageText.getText()));
-                        // student_.setAddress(addressText.getText());
-                        // student_.setGenger(genderText.getText());
                         Students student_ = new Students(nameText.getText(), Integer.parseInt(ageText.getText()), genderText.getText(), addressText.getText());
-
-                        // arr.add(student_);
                         manage.manageStudents.add(student_);
-
-                        // for (Students o : manage.manageStudents) 
-                        //     System.out.println(o.ShowInfor());
-
+                        JLabel studentJLabel= new JLabel(student_.ShowInfor());
+                        arrJLabel.add(studentJLabel);
                     }  
                 });
                 
